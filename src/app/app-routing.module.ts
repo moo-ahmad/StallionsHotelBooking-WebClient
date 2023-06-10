@@ -10,7 +10,7 @@ const routes: Routes = [
     component: AppComponent
   },
   {
-    path: '',
+    path: 'Auth',
     loadChildren: () => import('./Components/Auth/auth.module').then(m => m.AuthModule)
   }
 ];

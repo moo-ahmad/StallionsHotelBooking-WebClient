@@ -11,6 +11,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { CreatebookingComponent } from './createbooking/createbooking.component';
+import { AgGridModule } from 'ag-grid-angular';
 
 const routes: Routes = [
   {
@@ -45,6 +46,7 @@ const routes: Routes = [
     MatNativeDateModule,
     FormsModule,
     ReactiveFormsModule,
+    AgGridModule,
     RouterModule.forChild(routes)
   ],
   exports: [RouterModule]

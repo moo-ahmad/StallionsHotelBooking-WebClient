@@ -58,7 +58,6 @@ export class SignupComponent implements OnInit {
       {
         firstName: ['', [Validators.required]],
         lastName: ['', [Validators.required]],
-        phone: ['', [Validators.required]],
         email: ['', [Validators.required]],
         roleSelect: ['', [Validators.required]],
         password: ['', [Validators.required]],
@@ -160,6 +159,8 @@ export class SignupComponent implements OnInit {
         error: (error) => {
           if (error.status == 0) {
             this.toastr.error('Internal Server Error!', ' Error!');
+          } else if (error.status == 409) {
+            this.toastr.error('User with this email already exists!', ' Error!');
           }
         },
       });

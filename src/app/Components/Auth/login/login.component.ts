@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from '@servoy/ngx-toastr';
 import { AuthService } from 'src/app/Common/AppServices/AuthService/auth.service';
 import { TokenService } from 'src/app/Common/AppServices/TokenService/token.service';
+import { Roles } from 'src/app/Common/Enums/roles.enum';
 import { LoginRequest } from 'src/app/Models/Request/login-request';
 
 @Component({
@@ -76,7 +77,12 @@ export class LoginComponent implements OnInit {
         this.tokenService.saveSession(data);
         this.isLoggedIn = true;
         this.isLoginFailed = false;
-        this.router.navigate(['Patient/patientList']);
+        let userRole = this.tokenService.getUserRole(data?.token as string);
+        if (userRole == Roles.Admin) {
+          this.router.navigate(['Admin/dashboard']);
+        } else {
+          this.router.navigate(['Customer/dashboard']);
+        }
       }),
       error: (error => {
         if(error.status == 401){

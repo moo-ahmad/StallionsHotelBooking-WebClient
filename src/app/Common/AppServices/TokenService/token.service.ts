@@ -37,7 +37,7 @@ export class TokenService {
     return true;
   }
 
-  private getUserRole(token: string){
+  getUserRole(token: string){
     var payload = JSON.parse(atob(token.split('.')[1]));
     return payload["http://schemas.microsoft.com/ws/2008/06/identity/claims/role"]
   }

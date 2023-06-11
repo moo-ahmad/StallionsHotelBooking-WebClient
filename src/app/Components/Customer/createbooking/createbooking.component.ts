@@ -1,5 +1,9 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { ToastrService } from '@servoy/ngx-toastr';
+import { CustomerService } from 'src/app/Common/AppServices/CustomerService/customer.service';
+import { TokenService } from 'src/app/Common/AppServices/TokenService/token.service';
 import { CreateBookigRequest } from 'src/app/Models/Request/create-booking-request';
 
 @Component({
@@ -7,7 +11,7 @@ import { CreateBookigRequest } from 'src/app/Models/Request/create-booking-reque
   templateUrl: './createbooking.component.html',
   styleUrls: ['./createbooking.component.css']
 })
-export class CreatebookingComponent {
+export class CreatebookingComponent implements OnInit {
   myForm!: FormGroup;
   submitted: boolean = false;
   terms: boolean = false;
@@ -24,7 +28,7 @@ export class CreatebookingComponent {
     termsAndConditions: this.terms
   }
 
-  constructor(private fb: FormBuilder){
+  constructor(private fb: FormBuilder, private customerService: CustomerService, private router: Router){
     this.createForm();
   }
 
@@ -62,6 +66,8 @@ export class CreatebookingComponent {
         control!.markAsTouched({ onlySelf: true });
        });
       }
+      this.customerService._newBookingToastr = true;
+      this.router.navigate(['Customer/dashboard']);
     // Perform form submission logic here
   }
 

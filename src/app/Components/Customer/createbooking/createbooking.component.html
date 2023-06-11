@@ -1,0 +1,107 @@
+<div class="container" style="width: 50%; margin-top: 114px;">
+    <h2>Room Booking</h2>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <mat-form-field style="width: 80%;">
+                  <mat-label>Arrival Date</mat-label>
+                  <input matInput [matDatepicker]="arrivalDatePicker" [(ngModel)]="arrivalDate">
+                  <mat-datepicker-toggle matSuffix [for]="arrivalDatePicker"></mat-datepicker-toggle>
+                  <mat-datepicker #arrivalDatePicker></mat-datepicker>
+                </mat-form-field>
+              </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <mat-form-field style="width: 80%;">
+                  <mat-label>Departure Date</mat-label>
+                  <input matInput [matDatepicker]="departureDatePicker" [(ngModel)]="departureDate">
+                  <mat-datepicker-toggle matSuffix [for]="departureDatePicker"></mat-datepicker-toggle>
+                  <mat-datepicker #departureDatePicker></mat-datepicker>
+                </mat-form-field>
+              </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <mat-form-field style="width: 80%;">
+                  <mat-label>Room Type</mat-label>
+                  <mat-select [(ngModel)]="roomType">
+                    <mat-option value="single">Single</mat-option>
+                    <mat-option value="double">Double</mat-option>
+                    <!-- Add more room types as needed -->
+                  </mat-select>
+                </mat-form-field>
+              </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <mat-form-field style="width: 80%;">
+                  <mat-label>Number of Guests</mat-label>
+                  <input matInput type="number" [(ngModel)]="numOfGuests">
+                </mat-form-field>
+              </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <mat-form-field style="width: 80%;">
+                  <mat-label>Name</mat-label>
+                  <input matInput [(ngModel)]="name">
+                </mat-form-field>
+              </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <mat-form-field style="width: 80%;">
+                  <mat-label>Email</mat-label>
+                  <input matInput type="email" [(ngModel)]="email">
+                </mat-form-field>
+              </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <mat-form-field style="width: 80%;">
+                  <mat-label>Phone Number</mat-label>
+                  <input matInput type="tel" [(ngModel)]="phoneNumber">
+                </mat-form-field>
+              </div>
+        </div>
+        <div class="col-6">
+            <div class="form-group">
+                <mat-form-field style="width: 80%;">
+                  <mat-label>Payment Information</mat-label>
+                  <input matInput [(ngModel)]="paymentInfo">
+                </mat-form-field>
+              </div>
+        </div>
+    </div>  
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <mat-form-field style="width: 90%;">
+                  <mat-label>Special Requests</mat-label>
+                  <textarea matInput [(ngModel)]="specialRequests"></textarea>
+                </mat-form-field>
+              </div>
+        </div>
+    </div>
+
+  
+    
+
+  
+    <div class="form-group">
+      <mat-checkbox [(ngModel)]="termsAndConditions">I have read and agree to the terms and conditions</mat-checkbox>
+    </div>
+  
+    <div class="buttons" style="margin-top: 10px;">
+      <!-- <button class="btn btn-secondary" (click)="dialogRef.close()">Cancel</button> -->
+      <button class="btn btn-primary" [disabled]="!termsAndConditions" (click)="onSubmit()">Book Now</button>
+    </div>
+  </div>
+  

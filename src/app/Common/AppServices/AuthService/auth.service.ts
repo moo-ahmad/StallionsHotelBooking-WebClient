@@ -10,7 +10,7 @@ import { environment } from 'src/environment/environment.dev';
   providedIn: 'root'
 })
 export class AuthService {
-
+  _accountCreatedToastr: boolean = false;
   constructor(private httpClient: HttpClient) { }
 
   login(loginRequest: LoginRequest): Observable<TokenResponse>{

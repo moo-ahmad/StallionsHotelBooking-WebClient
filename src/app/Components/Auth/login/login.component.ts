@@ -12,7 +12,7 @@ import { LoginRequest } from 'src/app/Models/Request/login-request';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, AfterViewInit {
 
   loginRequest: LoginRequest = {
     email: "",
@@ -31,9 +31,16 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     let isLoggedIn = this.tokenService.isLoggedIn();
     if(isLoggedIn){
-      this.isLoggedIn = true;
-      this.router.navigate(['Patient/patientList']);
     }
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => {
+      if(this.authService._accountCreatedToastr) {
+        this.toastr.success('Account created successfully!', ' Success!');
+      }
+      this.authService._accountCreatedToastr = false;
+    }, 1000);
   }
 
   get f() { return this.myForm.controls; }

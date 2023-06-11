@@ -146,13 +146,12 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit() {
-    this.submitted = true;
     if (this.myForm.invalid) {
       return;
     } else {
-      this.loading = true;
       this.authService.signup(this.signupRequest).subscribe({
         next: (data) => {
+          this.authService._accountCreatedToastr = true;
           this.tokenService.saveSession(data);
           this.router.navigate(['Auth/login']);
         },

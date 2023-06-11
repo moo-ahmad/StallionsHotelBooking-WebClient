@@ -1,28 +1,35 @@
-:host {
-    display: flex;
-    justify-content: center;
-    margin: 100px 0px;
-  }
+.custom-card {
+  width: 300px;
+  height: 500px;
+  margin-right: 300px;
+}
+.parent-div {
+  height: 100vh; 
+  background-image: url('../../../../assets/plain-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
-  .mat-form-field {
-    width: 100%;
-    min-width: 300px;
-  }
+}
+.custom-field {
+  width: 100% !important;
+}
 
-  mat-card-title,
-  mat-card-content {
-    display: flex;
-    justify-content: center;
-  }
+.custom-button {
+  width: 100% !important;
+  margin-top: 25px;
+}
 
-  .error {
-    padding: 16px;
-    width: 300px;
-    color: white;
-    background-color: red;
-  }
+.stallions-logo {
+  margin-right: 400px;
+}
 
-  .button {
-    display: flex;
-    justify-content: flex-end;
-  }
+.stallions-container {
+  max-width: 50px;
+  max-height: 50px;
+}
+
+.signup {
+  float: right;
+  margin-top: 20px;
+}

@@ -1,32 +1,40 @@
-<mat-card>
+<div class="d-flex align-items-center justify-content-center parent-div">
+<mat-card class="custom-card">
+  <mat-card-header>
     <mat-card-title>Login</mat-card-title>
+  </mat-card-header>
 <mat-card-content>
 <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
-
-    <mat-form-field>
-      <input type="text" matInput placeholder="Email" formControlName="email"
-      [(ngModel)]="loginRequest.email" pInputText
+    <mat-form-field class="custom-field">
+      <mat-label>Email</mat-label>
+      <input type="Email" matInput formControlName="email"
+      [(ngModel)]="loginRequest.email"
       >
     </mat-form-field>
-    <div *ngIf="submitted && f['email'].errors" class="invalid-feedback text-red-600">
+    <div *ngIf="submitted && f['email'].errors" class="text-danger">
       <div *ngIf="f['email'].errors['required']">Email is required</div>
       <div *ngIf="f['email'].errors['email']">Please enter a valid email.</div>
     </div>
   
-    <mat-form-field>
-      <input type="password" matInput placeholder="Password" formControlName="password"
-      [(ngModel)]="loginRequest.password" pInputText
+    <mat-form-field class="custom-field">
+      <mat-label>Password</mat-label>
+      <input type="password" matInput formControlName="password"
+      [(ngModel)]="loginRequest.password"
       >
     </mat-form-field>
-    <div *ngIf="submitted && f['password'].errors" class="invalid-feedback text-red-600">
+    <div *ngIf="submitted && f['password'].errors" class="text-danger">
       <div *ngIf="f['password'].errors['required']">Password is required</div>
     </div>
-  
 
-  <div class="button">
-    <button type="submit" mat-button>Login</button>
+  <div class="button ">
+    <button type="submit" class="custom-button" mat-raised-button color="accent">Login</button>
+  </div>
+
+  <div class="signup">
+    Not registered? <a routerLink="../signup">Create an account</a>
   </div>
 
 </form>
 </mat-card-content>
 </mat-card>
+</div>

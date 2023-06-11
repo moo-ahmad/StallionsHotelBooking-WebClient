@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from '@servoy/ngx-toastr';
 import { AuthService } from 'src/app/Common/AppServices/AuthService/auth.service';
 import { TokenService } from 'src/app/Common/AppServices/TokenService/token.service';
 import { LoginRequest } from 'src/app/Models/Request/login-request';
@@ -22,7 +23,7 @@ export class LoginComponent implements OnInit {
   submitted: boolean = false;
   loading: boolean = false;
   snackbarOpen: boolean = false;
-  constructor(private authService: AuthService, private tokenService: TokenService, private router: Router, private fb: FormBuilder){
+  constructor(private authService: AuthService, private tokenService: TokenService, private toastr: ToastrService, private router: Router, private fb: FormBuilder){
     this.createForm();
   }
 
@@ -79,9 +80,9 @@ export class LoginComponent implements OnInit {
       }),
       error: (error => {
         if(error.status == 401){
-         // this.messageService.add({severity:'error', summary: 'Error', detail: 'Invalid Email or Password.'});  
+         this.toastr.error('Invalid Email or Password!', ' Error!'); 
         } else if(error.status == 0) {
-         // this.messageService.add({severity:'error', summary: 'Error', detail: 'Internal Server Error.'});      
+         this.toastr.error('Internal Server Error!', ' Error!');    
         }
       })
     });

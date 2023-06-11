@@ -8,6 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthInterceptorProvider } from 'src/app/Common/AppInterceptors/AuthInterceptor/auth.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
+
 
 const routes: Routes = [
   {
@@ -35,6 +37,7 @@ const routes: Routes = [
     MatCardModule,
     MatInputModule,
     MatButtonModule,
+    MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes)

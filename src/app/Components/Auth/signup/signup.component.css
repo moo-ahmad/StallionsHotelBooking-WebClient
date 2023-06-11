@@ -1,0 +1,35 @@
+.custom-card {
+    width: 650px;
+    height: 600px;
+    margin-right: 300px;
+  }
+  .parent-div {
+    height: 100vh; 
+    background-image: url('../../../../assets/plain-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  
+  }
+  .custom-field {
+    width: 100% !important;
+  }
+  
+  .custom-button {
+    width: 100% !important;
+    margin-top: 25px;
+  }
+  
+  .stallions-logo {
+    margin-right: 400px;
+  }
+  
+  .stallions-container {
+    max-width: 50px;
+    max-height: 50px;
+  }
+  
+  .signup {
+    float: right;
+    margin-top: 20px;
+  }

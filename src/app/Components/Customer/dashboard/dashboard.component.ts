@@ -1,18 +1,22 @@
 import { HttpClient } from '@angular/common/http';
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { ToastrService } from '@servoy/ngx-toastr';
 import { AgGridAngular } from 'ag-grid-angular';
 import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { CustomerService } from 'src/app/Common/AppServices/CustomerService/customer.service';
+import { GetBookingResponse } from 'src/app/Models/Response/get-bookings-response';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements AfterViewInit {
-  constructor( private customerService: CustomerService, private toastr: ToastrService,private http: HttpClient){}
+export class DashboardComponent implements OnInit, AfterViewInit {
+  constructor( private customerService: CustomerService, private toastr: ToastrService, private http: HttpClient){}
+  ngOnInit(): void {
+    
+  }
   ngAfterViewInit(): void {
     setTimeout(() => {
       if(this.customerService._newBookingToastr) {
@@ -24,9 +28,11 @@ export class DashboardComponent implements AfterViewInit {
 
     // Each Column Definition results in one Column.
     public columnDefs: ColDef[] = [
-      { field: 'make'},
-      { field: 'model'},
-      { field: 'price' }
+      { field: 'name'},
+      { field: 'email'},
+      { field: 'arrivalDate' },
+      { field: 'departureDate' },
+      { field: 'bookingStatus' }
     ];
   
     // DefaultColDef sets props common to all Columns
@@ -43,10 +49,18 @@ export class DashboardComponent implements AfterViewInit {
   
     // Example load data from server
     onGridReady(params: GridReadyEvent) {
-      this.rowData$ = this.http
-        .get<any[]>('https://www.ag-grid.com/example-assets/row-data.json');
+      this.getUserBookings();
     }
   
+    getUserBookings(){
+      var data = this.customerService.getAllBookings().subscribe({
+        next: (data => {
+          const bookingsObservable: Observable<GetBookingResponse[]> = of(data);
+          this.rowData$ = bookingsObservable;
+        }),
+      })
+    }
+
     // Example of consuming Grid Event
     onCellClicked( e: CellClickedEvent): void {
       console.log('cellClicked', e);

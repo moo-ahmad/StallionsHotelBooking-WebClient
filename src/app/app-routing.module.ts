@@ -22,7 +22,7 @@ const routes: Routes = [
   },
   {
     path: 'Customer',
-    canActivate: [],
+    canActivate: [CustomerGuard],
     loadChildren: () => import('./Components/Customer/customer.module').then(m => m.CustomerModule)
   }
 ];

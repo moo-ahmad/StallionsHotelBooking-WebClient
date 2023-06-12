@@ -8,7 +8,6 @@ import {
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { TokenService } from '../../AppServices/TokenService/token.service';
-import { environment } from 'src/environment/environment.dev';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -16,9 +15,8 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor(private tokenService: TokenService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    const requestForApis = request.url.startsWith(environment.apiUrl);
     const isLoggedIn = this.tokenService.isLoggedIn();
-    if(isLoggedIn &&  requestForApis) {
+    if(isLoggedIn) {
       let session = this.tokenService.getSession();
       if(session) {
         request = request.clone({headers: request.headers.set('Authorization', `Bearer ${session.token}`)})

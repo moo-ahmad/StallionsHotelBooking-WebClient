@@ -52,6 +52,6 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   exports: [RouterModule],
-  providers: [AuthInterceptorProvider],
+  providers: [],
 })
 export class AuthModule { }

@@ -28,7 +28,7 @@ export class CreatebookingComponent implements OnInit {
     termsAndConditions: this.terms
   }
 
-  constructor(private fb: FormBuilder, private customerService: CustomerService, private router: Router){
+  constructor(private fb: FormBuilder, private toastr: ToastrService, private customerService: CustomerService, private router: Router){
     this.createForm();
   }
 
@@ -66,9 +66,20 @@ export class CreatebookingComponent implements OnInit {
         control!.markAsTouched({ onlySelf: true });
        });
       }
-      this.customerService._newBookingToastr = true;
-      this.router.navigate(['Customer/dashboard']);
-    // Perform form submission logic here
+   
+      this.customerService.createBooking(this.createBookingRequest).subscribe({
+        next: (data => {
+          if(data.result){
+            this.customerService._newBookingToastr = true;
+             this.router.navigate(['Customer/dashboard']);
+          }
+        }),
+        error: (error => {
+          if(error.status == 0) {
+            this.toastr.error('Internal Server Error!', ' Error!');    
+           }
+        })
+      });
   }
 
 }

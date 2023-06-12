@@ -1,1 +1,12 @@
-<p>dashboard works!</p>
+<h1 class="text-center">Booking Dashboard</h1>
+<ag-grid-angular
+    style="width: 90%; height: 80%; margin-left: 5%;margin-top: 4%;"
+    class="ag-theme-alpine"
+    [columnDefs]="columnDefs"
+    [defaultColDef]="defaultColDef"
+    [rowData]="rowData$ | async"
+    [rowSelection]="'multiple'"
+    [animateRows]="true"
+    (gridReady)="onGridReady($event)"
+    (cellClicked)="onCellClicked($event)"
+  ></ag-grid-angular>

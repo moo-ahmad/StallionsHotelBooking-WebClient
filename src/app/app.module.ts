@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from '@servoy/ngx-toastr';
+import { AuthInterceptorProvider } from './Common/AppInterceptors/AuthInterceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,7 @@ import { ToastrModule } from '@servoy/ngx-toastr';
     HttpClientModule,
     ToastrModule.forRoot()
   ],
-  providers: [],
+  providers: [AuthInterceptorProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

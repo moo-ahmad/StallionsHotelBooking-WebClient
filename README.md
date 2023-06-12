@@ -60,3 +60,6 @@
 
 ![App Screenshot](https://user-images.githubusercontent.com/73497472/245071657-eb039d53-1486-44a8-be8d-75333d2db524.png)
 
+<h3>Admin Dashboard</h3>
+
+![App Screenshot](https://user-images.githubusercontent.com/73497472/245071661-9c58cf27-ac39-4189-839e-431d0829c10b.png)

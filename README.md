@@ -43,3 +43,20 @@
 <h3>Sign up success message</h3>
 
 ![App Screenshot](https://user-images.githubusercontent.com/73497472/245071635-a7ce0468-4a3f-4f49-93f6-46ecc6a31e6c.png)
+
+<h3>Customer Dashboard</h3>
+
+![App Screenshot](https://user-images.githubusercontent.com/73497472/245071647-56089920-fc2e-4525-9a9c-dd96e06a9eb6.png)
+
+<h3>Create Booking Form</h3>
+
+![App Screenshot](https://user-images.githubusercontent.com/73497472/245071652-6e074c31-6f68-48cc-863d-fe6d1d58f161.png)
+
+<h3>Create Booking Form Validated</h3>
+
+![App Screenshot](https://user-images.githubusercontent.com/73497472/245071656-a7fadc5f-db28-4778-a83e-bad1d95ca372.png)
+
+<h3>Booking Created Success Message </h3>
+
+![App Screenshot](https://user-images.githubusercontent.com/73497472/245071657-eb039d53-1486-44a8-be8d-75333d2db524.png)
+
